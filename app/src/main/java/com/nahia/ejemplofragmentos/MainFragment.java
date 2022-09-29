@@ -1,5 +1,7 @@
 package com.nahia.ejemplofragmentos;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -32,13 +34,43 @@ public class MainFragment extends Fragment {
         btFragmento2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                SecondFragment secondFragment = new SecondFragment();
-                fragmentTransaction.replace(R.id.fragment_container, secondFragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                //loadFragment();
+                loadFragment2(new SecondFragment());
             }
         });
+
+        Button btLlamar = getView().findViewById(R.id.bt_llamar);
+        btLlamar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //llamarTelefono("555445543");
+                mostrarMapa();
+            }
+        });
+    }
+
+    private void loadFragment(){
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        SecondFragment secondFragment = new SecondFragment();
+        fragmentTransaction.replace(R.id.fragment_container, secondFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    private void loadFragment2(Fragment fragment){
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
+    }
+
+    private void llamarTelefono(String telefono){
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel: " + telefono));
+        startActivity(intent);
+    }
+
+    private void mostrarMapa(){
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("geo:0,0?q=ies+castelar+badajoz"));
+        startActivity(intent);
     }
 }

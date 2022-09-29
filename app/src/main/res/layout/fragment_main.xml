@@ -21,11 +21,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/bt_llamar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:text="Button"
+        android:layout_marginStart="52dp"
+        android:text="LLAMAR POR TELEFONO"
         app:layout_constraintBottom_toTopOf="@+id/bt_loadFragment2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -39,7 +39,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bt_loadFragment2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.282"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/bt_llamar"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.823" />
 
